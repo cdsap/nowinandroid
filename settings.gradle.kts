@@ -39,6 +39,22 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+plugins {
+    id("com.gradle.enterprise") version "3.10.2"
+    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.7.2"
+}
+
+gradleEnterprise {
+    server = "https://ec2-18-232-184-80.compute-1.amazonaws.com"
+    allowUntrustedServer = true
+    buildScan {
+        publishAlways()
+        capture {
+            isTaskInputFiles = true
+        }
+        isUploadInBackground = System.getenv("CI") == null
+    }
+}
 rootProject.name = "nowinandroid"
 include(":app")
 include(":app-nia-catalog")
