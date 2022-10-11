@@ -35,7 +35,7 @@ jobs:
                   unzip  ${{ steps.sdkman.outputs.file }}
 
                   echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
-                  #gradle-profiler-0.18.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble
+                  gradle-profiler-0.18.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble
 
             - name: Archive production artifacts
               uses: actions/upload-artifact@v3
@@ -62,7 +62,7 @@ jobs:
               env:
                   GE_URL: ${{ secrets.GE_URL }}
                   GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-                  GRADLE_API_KEY: ${{ secrets.TEST_SECRET }}
+                  GRADLE_API_KEY: ${{ secrets.GE_API_KEY }}
               run: |
                   mkdir geapi
                   cd geapi
