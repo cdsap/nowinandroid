@@ -2,6 +2,7 @@ name: Run Gradle on PRs
 on: pull_request
 jobs:
     prBranch:
+        timeout-minutes: 60
         strategy:
             matrix:
                 variant: [pr, main]
@@ -43,6 +44,7 @@ jobs:
                   path: /home/runner/.gradle/caches/transforms-3/9a864bdf6138f0a2c754a9e732c2644a/transformed/output
 
     geapi:
+        timeout-minutes: 30
         runs-on: ubuntu-latest
         needs: [ prBranch]
         steps:
