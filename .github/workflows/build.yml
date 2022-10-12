@@ -19,7 +19,7 @@ jobs:
               id: sdkman
               with:
                   candidate: gradleprofiler
-                  version: 0.18.0
+                  version: 0.19.0
 
             - name: Setup Gradle
               uses: gradle/gradle-build-action@v2
@@ -34,7 +34,7 @@ jobs:
                   fi
                   unzip  ${{ steps.sdkman.outputs.file }}
                   echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
-                  gradle-profiler-0.18.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble
+                  gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble
 
 
     geapi:
