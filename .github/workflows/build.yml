@@ -5,7 +5,7 @@ jobs:
         timeout-minutes: 300
         strategy:
             matrix:
-                variant: [pr, main]
+                variant: [pr]
                 os: [ubuntu-latest]
         runs-on: ${{ matrix.os }}
         steps:
