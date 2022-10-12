@@ -2,7 +2,7 @@ name: Run Gradle on PRs
 on: pull_request
 jobs:
     prBranch:
-        timeout-minutes: 60
+        timeout-minutes: 300
         strategy:
             matrix:
                 variant: [pr, main]
@@ -33,9 +33,6 @@ jobs:
                     git checkout main
                   fi
                   unzip  ${{ steps.sdkman.outputs.file }}
-
-
-
                   echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
                   gradle-profiler-0.18.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble
 
