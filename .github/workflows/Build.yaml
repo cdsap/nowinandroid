@@ -66,7 +66,13 @@ jobs:
                   git checkout experiment_draft
                   ./gradlew install
                   geapi/build/install/geapi/bin/geapi --report=experiment --api-key=$GRADLE_API_KEY --url=https://ge.solutions-team.gradle.com  --task=assembleDebug --max-builds=100  --tags=main --tags=experiment --tags=pr --tags=${{github.run_number}} --experiment-id=${{github.run_number}} --project=nowinandroid > alo
+                  echo "1"
+                  cat alo
+
                   awk '/Processing build scan cache performance/ {p=1;next}; p==1 {print}' alo > alo2
+                  echo "2"
+                  cat alo2
+                  echo "3"
                   CA=""
                   while IFS= read -r line
                   do
