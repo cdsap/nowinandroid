@@ -5,7 +5,7 @@ jobs:
         timeout-minutes: 300
         strategy:
             matrix:
-                variant: [pr, main]
+                variant: [{branch: pr, version: 17},{branch:main, version:11}]
                 os: [ubuntu-latest]
         runs-on: ${{ matrix.os }}
         steps:
@@ -13,7 +13,7 @@ jobs:
             - uses: actions/setup-java@v3
               with:
                   distribution: temurin
-                  java-version: 17
+                  java-version: ${{ matrix.variant.version }}
 
             - uses: sdkman/sdkman-action@master
               id: sdkman
@@ -28,12 +28,12 @@ jobs:
                   GE_URL: ${{ secrets.GE_URL }}
                   GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
               run: |
-                  if [ "${{ matrix.variant }}" == "main" ]; then
+                  if [ "${{ matrix.variant.branch }}" == "main" ]; then
                     git fetch origin
                     git checkout main
                   fi
                   unzip  ${{ steps.sdkman.outputs.file }}
-                  echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
+                  echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant.branch }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
                   gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups 1 --iterations 4
 
 
