@@ -93,7 +93,7 @@ jobs:
                   cd geapi
                   git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
                   cd GradleEnterpriseApiReports
-                  git checkout main
+                  git checkout adding_new_way
                   ./gradlew install
                   geapi/build/install/geapi/bin/geapi --report=experiment --api-key=$GRADLE_API_KEY --url=https://ge.solutions-team.gradle.com  --task=assembleDebug --max-builds=100  --tags=main --tags=experiment --tags=pr --tags=${{github.run_number}} --experiment-id=${{github.run_number}} --project=nowinandroid > alo
                   awk '/Processing build scan cache performance/ {p=1;next}; p==1 {print}' alo > alo2
