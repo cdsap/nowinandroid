@@ -13,7 +13,7 @@ jobs:
             - uses: actions/setup-java@v3
               with:
                   distribution: temurin
-                  java-version: 19
+                  java-version: 17
 
             - uses: sdkman/sdkman-action@master
               id: sdkman
@@ -30,7 +30,7 @@ jobs:
               run: |
                   unzip  ${{ steps.sdkman.outputs.file }}
                   echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
-                  gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups 2 --iterations 6
+                  gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups 1 --iterations 5
 
 
     main:
@@ -45,7 +45,7 @@ jobs:
             - uses: actions/setup-java@v3
               with:
                   distribution: temurin
-                  java-version: 17
+                  java-version: 11
 
             - uses: sdkman/sdkman-action@master
               id: sdkman
@@ -64,7 +64,7 @@ jobs:
                   git checkout main
                   unzip  ${{ steps.sdkman.outputs.file }}
                   echo $'assemble { \n title= "assemble" \n tasks = ["assembleDebug"] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = ["core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"] \n gradle-args = ["-Dscan.tag.${{ matrix.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{github.run_number}}"] \n}' >scenario
-                  gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups 2 --iterations 6
+                  gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups 1 --iterations 5
 
 
     geapi:
