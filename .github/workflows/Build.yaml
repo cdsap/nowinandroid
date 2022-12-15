@@ -2,7 +2,7 @@ name: Run Gradle on PRs
 on: pull_request
 jobs:
     prBranch:
-        timeout-minutes: 300
+        timeout-minutes: 350
         strategy:
             matrix:
                 variant: [pr]
@@ -34,7 +34,7 @@ jobs:
 
 
     main:
-        timeout-minutes: 300
+        timeout-minutes: 350
         strategy:
             matrix:
                 variant: [main]
