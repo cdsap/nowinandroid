@@ -17,6 +17,7 @@
 pluginManagement {
     includeBuild("build-logic")
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -24,7 +25,7 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.common-custom-user-data-gradle-plugin") version "1.8.1"
+   // id("com.gradle.common-custom-user-data-gradle-plugin") version "1.8.1"
     id("com.gradle.enterprise") version "3.11.1"
 
 }
@@ -44,6 +45,7 @@ gradleEnterprise {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
     }

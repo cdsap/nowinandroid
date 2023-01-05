@@ -23,6 +23,11 @@ buildscript {
         maven { url = uri("../nowinandroid-prebuilts/m2repository") }
     }
 
+    dependencies{
+        classpath("org.gradle.android:android-cache-fix-gradle-plugin:2.6.19")
+        classpath("com.vanniktech:gradle-dependency-graph-generator-plugin:0.8.0")
+    }
+
 }
 
 plugins {
@@ -31,4 +36,18 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.secrets) apply false
+    id("com.vanniktech.dependency.graph.generator") version "0.5.0"
+    id("com.autonomousapps.dependency-analysis") version "1.17.0"
+
+
+        id("io.github.cdsap.ipinfo") version "0.1"
+
+
+}
+
+
+subprojects {
+    plugins.withType<com.android.build.gradle.api.AndroidBasePlugin>() {
+        apply(plugin = "org.gradle.android.cache-fix")
+    }
 }
