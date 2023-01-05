@@ -47,5 +47,5 @@ dependencies {
     androidTestImplementation(project(":core:testing"))
 }
 room {
-    schemaLocationDir = file("roomSchemas")
+    schemaLocationDir.set(file("roomSchemas"))
 }
