@@ -27,15 +27,7 @@ android {
         // The schemas directory contains a schema file for each version of the Room database.
         // This is required to enable Room auto migrations.
         // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += mapOf(
-                    "room.schemaLocation" to "$projectDir/schemas",
-                    "room.incremental" to "true",
-                    "room.expandProjection" to "true"
-                )
-            }
-        }
+
 
         testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
     }
@@ -53,4 +45,7 @@ dependencies {
     implementation(libs.kotlinx.datetime)
 
     androidTestImplementation(project(":core:testing"))
+}
+room {
+    schemaLocationDir = file("roomSchemas")
 }
