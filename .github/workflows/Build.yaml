@@ -2,7 +2,7 @@ name: Run Gradle on PRs
 on: pull_request
 jobs:
     prBranch:
-        timeout-minutes: 300
+        timeout-minutes: 350
         strategy:
             matrix:
                 variant: [pr]
@@ -13,7 +13,7 @@ jobs:
             - uses: actions/setup-java@v3
               with:
                   distribution: temurin
-                  java-version: 17
+                  java-version: 11
 
             - uses: sdkman/sdkman-action@master
               id: sdkman
@@ -34,7 +34,7 @@ jobs:
 
 
     main:
-        timeout-minutes: 300
+        timeout-minutes: 350
         strategy:
             matrix:
                 variant: [main]

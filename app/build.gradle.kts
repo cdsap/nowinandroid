@@ -34,6 +34,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        composeOptions {
+            kotlinCompilerExtensionVersion = "1.4.0-dev-k1.8.0-RC-4c1865595ed"
+        }
     }
 
     buildTypes {
@@ -119,3 +122,4 @@ configurations.configureEach {
         force("org.objenesis:objenesis:2.6")
     }
 }
+
