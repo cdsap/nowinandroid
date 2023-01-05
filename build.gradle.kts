@@ -48,6 +48,6 @@ plugins {
 
 subprojects {
     plugins.withType<com.android.build.gradle.api.AndroidBasePlugin>() {
-        apply(plugin = "org.gradle.android.cache-fix")
+        //apply(plugin = "org.gradle.android.cache-fix")
     }
 }
