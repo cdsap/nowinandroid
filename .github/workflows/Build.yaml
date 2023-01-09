@@ -3,9 +3,8 @@ on: [push]
 jobs:
     example_matrix:
       strategy:
-      matrix:
-        version: [main, pr]
-   
+        matrix:
+          version: [main, pr]
       steps:
          - uses: actions/checkout@v3
          - id: foo
