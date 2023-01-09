@@ -1,0 +1,45 @@
+name: 'GE Experiment Runner'
+description: 'Experiment Report'
+inputs:
+  task: 
+    description: ""
+    required: true
+  warmpups:
+    description: ""
+    required: false
+    default: 1
+  iterations:
+    description: ""
+    required: false
+    default: 5    
+  class: 
+    description: ""
+    required: true  
+  variant:
+    description: ""
+    required: true  
+  experiment-id:
+    description: ""
+    required: true  
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: 11.0.4
+    - uses: sdkman/sdkman-action@master
+      id: sdkman
+      with:
+        candidate: gradleprofiler
+        version: 0.19.0
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+    - name: Execute Gradle build
+      id : geapix
+      run: |
+           unzip  ${{ steps.sdkman.outputs.file }}
+           echo $'assemble { \n title= "assemble" \n tasks = [${{ inputs.task }}] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = [${{ inputs.class }}] \n gradle-args = ["-Dscan.tag.${{ inputs.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{inputs.experiment-id}}"] \n}' >scenario
+           gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups ${{ inputs.warmups }} --iterations ${{ inputs.iterations }}
+      shell: bash 
