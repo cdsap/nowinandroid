@@ -9,7 +9,6 @@ jobs:
             - id: foo
               uses: ./.github/actions/ge-experiment-runner
               with:
-                  secret_input: ${{ secrets.GITHUB_TOKEN }}
                   api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
                   url: ${{ secrets.GE_URL }}
                   task: "assembleDebug"
