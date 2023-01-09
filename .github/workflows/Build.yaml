@@ -9,12 +9,8 @@ jobs:
             - id: foo
               uses: ./.github/actions/ge-experiment-runner
               with:
-                  api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-                  url: ${{ secrets.GE_URL }}
                   task: "assembleDebug"
                   experiment-id: ${{github.run_number}}
-                  tags: "pr"
                   variant: "pr"
-                  project: "nowinandroid"
                   class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
 
