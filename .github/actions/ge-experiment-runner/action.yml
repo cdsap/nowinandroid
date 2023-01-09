@@ -39,6 +39,9 @@ runs:
     - name: Execute Gradle build
       id : geapix
       run: |
+           if [ "${{inputs.task}}" == "main" ]; then
+              git checkout main
+           fi
            unzip  ${{ steps.sdkman.outputs.file }}
            echo "1"
            echo ${{inputs.task}}
