@@ -4,7 +4,7 @@ inputs:
   task: 
     description: ""
     required: true
-  warmpups:
+  warmups:
     description: ""
     required: false
     default: 1
@@ -40,6 +40,12 @@ runs:
       id : geapix
       run: |
            unzip  ${{ steps.sdkman.outputs.file }}
+           echo "1"
+           echo ${{inputs.task}}
+           echo "3"
+           echo ${{inputs.warmups}}
+           echo ${{inputs.iterations}}
+           echo "5"
            echo $'assemble { \n title= "assemble" \n tasks = [${{ inputs.task }}] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = [${{ inputs.class }}] \n gradle-args = ["-Dscan.tag.${{ inputs.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{inputs.experiment-id}}"] \n}' >scenario
            gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups ${{ inputs.warmups }} --iterations ${{ inputs.iterations }}
       shell: bash 
