@@ -5,16 +5,14 @@ jobs:
       strategy:
       matrix:
         version: [main, pr]
-    hello_world_job:
-        runs-on: ubuntu-latest
-        name: A job to say hello
-        steps:
-            - uses: actions/checkout@v3
-            - id: foo
-              uses: ./.github/actions/ge-experiment-runner
-              with:
-                  task: "assembleDebug"
-                  experiment-id: ${{github.run_number}}
-                  variant: ${{ matrix.version }}
-                  class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
+   
+      steps:
+         - uses: actions/checkout@v3
+         - id: foo
+           uses: ./.github/actions/ge-experiment-runner
+           with:
+             task: "assembleDebug"
+             experiment-id: ${{github.run_number}}
+             variant: ${{ matrix.version }}
+             class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
 
