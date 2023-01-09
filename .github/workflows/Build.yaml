@@ -7,7 +7,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - id: foo
-              uses: ./.github/actions/ge-experiment-report
+              uses: ./.github/actions/ge-experiment-runner
               with:
                   secret_input: ${{ secrets.GITHUB_TOKEN }}
                   api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
@@ -18,5 +18,4 @@ jobs:
                   variant: "pr"
                   project: "nowinandroid"
                   class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
-            - run: echo "llegue"
-            - uses: ./.github/actions/ge-experiment-runner
+
