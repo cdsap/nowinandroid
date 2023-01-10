@@ -43,6 +43,7 @@ runs:
       id : geapix
       run: |
            branch_exp=$(git rev-parse --abbrev-ref HEAD)
+           echo $branch_exp
            if [ "${{inputs.variant}}" == "main" ]; then
               git fetch origin
               git checkout main
