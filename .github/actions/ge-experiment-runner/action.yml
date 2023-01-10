@@ -42,7 +42,7 @@ runs:
     - name: Execute Gradle build
       id : geapix
       run: |
-           if [ "${{inputs.task}}" == "main" ]; then
+           if [ "${{inputs.variant}}" == "main" ]; then
               git checkout main
            fi
            unzip  ${{ steps.sdkman.outputs.file }}
@@ -56,5 +56,5 @@ runs:
       with:
         name: profiler
         path: |
-          gradle-profiler/*
+          profile-out/*
                   
