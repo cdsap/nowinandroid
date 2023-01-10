@@ -1,7 +1,7 @@
 name: 'GE Experiment Runner'
 description: 'Experiment Report'
 inputs:
-  task: 
+  task:
     description: ""
     required: true
   warmups:
@@ -11,16 +11,19 @@ inputs:
   iterations:
     description: ""
     required: false
-    default: 5    
-  class: 
+    default: 5
+  class:
     description: ""
-    required: true  
+    required: true
   variant:
     description: ""
-    required: true  
+    required: true
   experiment-id:
     description: ""
-    required: true  
+    required: true
+  GRADLE_ENTERPRISE_ACCESS_KEY:
+    description: ""
+    required: true
 runs:
   using: 'composite'
   steps:
@@ -51,4 +54,6 @@ runs:
            echo "5"
            echo $'assemble { \n title= "assemble" \n tasks = [${{ inputs.task }}] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = [${{ inputs.class }}] \n gradle-args = ["-Dscan.tag.${{ inputs.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{inputs.experiment-id}}"] \n}' >scenario
            gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups ${{ inputs.warmups }} --iterations ${{ inputs.iterations }}
-      shell: bash 
+      shell: bash
+      env:
+        GRADLE_ENTERPRISE_ACCESS_KEY: ${{ inputs.GRADLE_ENTERPRISE_ACCESS_KEY }}

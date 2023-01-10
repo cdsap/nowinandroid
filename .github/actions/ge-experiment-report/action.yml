@@ -10,7 +10,7 @@ inputs:
   url:
     description: ""
     required: true
-  task: 
+  task:
     description: ""
     requierd: true
   max-builds:
@@ -20,9 +20,9 @@ inputs:
   experiment-id:
     description: ""
     required: true
-  tags: 
+  tags:
     description: ""
-    required: true      
+    required: true
   project:
     description: ""
     required: true
@@ -46,6 +46,6 @@ runs:
            git checkout main
            ./gradlew install
            geapi/build/install/geapi/bin/geapi --report=experiment --api-key=${{ inputs.api-key }} --url=${{ inputs.url }}  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  --tags=main --tags=experiment --tags=pr --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} > alo
-      shell: bash 
+      shell: bash
 
 

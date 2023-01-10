@@ -5,7 +5,7 @@ jobs:
       strategy:
         matrix:
           version: [main, pr]
-      runs-on: "ubuntu-latest"     
+      runs-on: "ubuntu-latest"
       steps:
          - uses: actions/checkout@v3
          - id: foo
@@ -15,4 +15,5 @@ jobs:
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
              class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
+             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
 
