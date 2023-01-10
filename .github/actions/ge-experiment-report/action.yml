@@ -1,9 +1,6 @@
 name: 'GE Experiment Report'
 description: 'Experiment Report'
 inputs:
-  secret_input:
-    description: ""
-    required: true
   api-key:
     description: ""
     required: true
@@ -16,7 +13,7 @@ inputs:
   max-builds:
     description: ""
     required: false
-    default: 500
+    default: 500  
   experiment-id:
     description: ""
     required: true
@@ -45,7 +42,15 @@ runs:
            cd GradleEnterpriseApiReports
            git checkout main
            ./gradlew install
-           geapi/build/install/geapi/bin/geapi --report=experiment --api-key=${{ inputs.api-key }} --url=${{ inputs.url }}  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  --tags=main --tags=experiment --tags=pr --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} > alo
+           #process tags
+           tags=${{ inputs.tags }}
+           arrayTags=(${IN//,/ })
+           tagsParsed=""
+           for val in "${arrayTags[@]}";
+           do
+              tagsParsed="$tagsParsed --tags=$val"
+           done
+           geapi/build/install/geapi/bin/geapi --report=experiment --api-key=${{ inputs.api-key }} --url=${{ inputs.url }}  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} > alo
       shell: bash
 
 
