@@ -15,7 +15,7 @@ jobs:
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
              class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
-             GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+             api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
     report:
       runs-on: "ubuntu-latest"
       needs: [ runners]
