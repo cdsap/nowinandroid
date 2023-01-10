@@ -7,11 +7,11 @@ inputs:
   warmups:
     description: "Number of build warmups"
     required: false
-    default: 1
+    default: 2
   iterations:
     description: "Number of iterations"
     required: false
-    default: 1
+    default: 5
   class:
     description: ""
     required: true

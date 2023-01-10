@@ -29,7 +29,7 @@ jobs:
              tags: "main, pr"
              project: "nowinandroid"
              api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-             url: ${{ secrets.GE_UEL }}
+             url: ${{ secrets.GE_URL }}
              
                 
 
