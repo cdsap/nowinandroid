@@ -28,7 +28,7 @@ jobs:
              experiment-id: ${{github.run_number}}
              tags: "main, pr"
              project: "nowinandroid"
-             api-key: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+             api-key: ${{ secrets.GE_API_KEY }}
              url: ${{ secrets.GE_URL }}
              gh_token: ${{secrets.GITHUB_TOKEN}}
              
