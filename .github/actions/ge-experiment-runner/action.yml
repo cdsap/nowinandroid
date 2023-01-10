@@ -11,7 +11,7 @@ inputs:
   iterations:
     description: "Number of iterations"
     required: false
-    default: 5
+    default: 1
   class:
     description: ""
     required: true
