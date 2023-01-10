@@ -45,6 +45,7 @@ runs:
            if [ "${{inputs.variant}}" == "main" ]; then
               git fetch origin
               git checkout main
+              git status
            fi
            unzip  ${{ steps.sdkman.outputs.file }}
            echo $'assemble { \n title= "assemble" \n tasks = [${{ inputs.task }}] \n cleanup-tasks = ["clean"] \n  apply-abi-change-to = [${{ inputs.class }}] \n gradle-args = ["-Dscan.tag.${{ inputs.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{inputs.experiment-id}}"] \n}' >scenario
