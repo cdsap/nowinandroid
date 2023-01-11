@@ -61,6 +61,7 @@ runs:
            echo "inaki"
            cat alo
            echo "inaki2"
+           echo ${{ inputs.url }}
       shell: bash
     - name: Send
       uses: actions/github-script@v5
