@@ -54,9 +54,6 @@ runs:
            do
               tagsParsed="$tagsParsed --tags=$val"
            done
-           echo "1"
-           echo ${{ inputs.url }} 
-           echo "2"
            geapi/build/install/geapi/bin/geapi --report=experiment --api-key=${{ inputs.api-key }} --url=${{ inputs.url }}  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} > alo
       shell: bash
     - name: Send
