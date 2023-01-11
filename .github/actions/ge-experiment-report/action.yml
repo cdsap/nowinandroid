@@ -58,10 +58,8 @@ runs:
            #geapi/build/install/geapi/bin/geapi --help > alo
            echo "1" > alo
            cat alo
+           geapi/build/install/geapi/bin/geapi --report=experiment --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }} >> alo
            a=$(cat alo)
-           #geapi/build/install/geapi/bin/geapi --report=experiment --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }} > alo
-           #ls -la
-           #echo "inaki"
            cat alo
            echo "inaki2"
            echo "SELECTED_COLOR=$a" >> $GITHUB_OUTPUT
