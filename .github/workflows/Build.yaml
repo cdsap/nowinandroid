@@ -1,5 +1,6 @@
-on: pull_request: types: [ opened, reopened, edited ]
-
+on: 
+  pull_request: 
+    types: [ opened, reopened, edited ]
 jobs:
     runners:
       strategy:
