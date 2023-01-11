@@ -42,18 +42,18 @@ runs:
       run: |
            mkdir geapi
            cd geapi
-           #git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
-           #cd GradleEnterpriseApiReports
-           #git checkout main
-           #./gradlew install
+           git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
+           cd GradleEnterpriseApiReports
+           git checkout main
+           ./gradlew install
            #process tags
-           #tags=${{ inputs.tags }}
-           #arrayTags=(${IN//,/ })
-           #tagsParsed=""
-           #for val in "${arrayTags[@]}";
-           #do
-           #   tagsParsed="$tagsParsed --tags=$val"
-           #done
+           tags=${{ inputs.tags }}
+           arrayTags=(${IN//,/ })
+           tagsParsed=""
+           for val in "${arrayTags[@]}";
+           do
+              tagsParsed="$tagsParsed --tags=$val"
+           done
 
            #geapi/build/install/geapi/bin/geapi --help > alo
            echo "1" > alo
