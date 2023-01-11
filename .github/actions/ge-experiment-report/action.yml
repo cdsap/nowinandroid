@@ -44,7 +44,7 @@ runs:
            cd geapi
            git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
            cd GradleEnterpriseApiReports
-           git checkout main
+           git checkout different_output_experiment
            ./gradlew install
            #process tags
            tags=${{ inputs.tags }}
@@ -58,11 +58,11 @@ runs:
            #geapi/build/install/geapi/bin/geapi --help > alo
            echo "1" > alo
            cat alo
-           geapi/build/install/geapi/bin/geapi --report=experiment --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }} >> alo2
+           geapi/build/install/geapi/bin/geapi --report=experiment --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }} --experiment-output=file
            cat alo2
            echo "dldldldldldldldl"
-           a=$(cat alo)
-           cat alo
+           a=$(cat results_experiment)
+           cat results_experiment
            echo "inaki2"
            echo "SELECTED_COLOR=$a" >> $GITHUB_OUTPUT
            
