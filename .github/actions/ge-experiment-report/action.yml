@@ -65,5 +65,4 @@ runs:
       uses: actions/upload-artifact@v3
       with:
         name: experiment
-        path: |
-          results_experiment
+        path: ./results_experiment
