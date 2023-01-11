@@ -1,6 +1,7 @@
-on: 
-  pull_request: 
-    types: [ opened ]
+on:
+  pull_request:
+  push:
+      branches: main
 
 jobs:
     runners:
