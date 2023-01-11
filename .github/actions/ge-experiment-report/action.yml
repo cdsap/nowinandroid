@@ -67,6 +67,12 @@ runs:
            echo "SELECTED_COLOR=$a" >> $GITHUB_OUTPUT
            
       shell: bash
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: experiment
+        path: |
+          results_experiment
     - name: Send
       uses: actions/github-script@v5
       with:
