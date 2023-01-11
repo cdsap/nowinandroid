@@ -55,7 +55,7 @@ runs:
 
            if [ "${{inputs.variant}}" == "main" ]; then
               git fetch origin
-              git checkout HEAD
+              git checkout ${GITHUB_REF##*/}
               git status
            fi
            
