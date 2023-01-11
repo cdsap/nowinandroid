@@ -11,7 +11,8 @@ jobs:
          - id: foo
            uses: ./.github/actions/ge-experiment-runner
            with:
-             task: "assembleDebug"
+             task: "help"
+             iterations: 1
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
              class: "core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/NewsRepository.kt"
