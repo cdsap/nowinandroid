@@ -70,21 +70,13 @@ runs:
       with:
         github-token: ${{inputs.gh_token}}
         script: |
-                const fs = require('fs');
-
-                fs.readFile('alo', 'utf8', (err, data) => {
-                  if (err) {
-                    console.error(err);
-                    return;
-                  }
-                 
-                  github.rest.issues.createComment({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: "${{ steps.geapix.outputs.SELECTED_COLOR }}"
-                  })
-                });
+                github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: "${{ steps.geapix.outputs.SELECTED_COLOR }}"
+                })
+              
                 
                 
 
