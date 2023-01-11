@@ -62,6 +62,7 @@ runs:
            #echo "inaki"
            cat alo
            echo "inaki2"
+           echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
            echo ${{ inputs.url }}
       shell: bash
     - name: Send
@@ -81,7 +82,7 @@ runs:
                   issue_number: context.issue.number,
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  body: data
+                  body: ${{ steps.geapix.outputs.SELECTED_COLOR }}"
                   })
                 });
                 
