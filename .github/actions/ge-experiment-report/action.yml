@@ -62,7 +62,7 @@ runs:
            #echo "inaki"
            cat alo
            echo "inaki2"
-           echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+           echo "SELECTED_COLOR=$(cat alo)" >> $GITHUB_OUTPUT
            echo ${{ inputs.url }}
       shell: bash
     - name: Send
