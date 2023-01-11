@@ -55,7 +55,7 @@ runs:
 
            if [ "${{inputs.variant}}" == "main" ]; then
               git fetch origin
-              git checkout ${GITHUB_REF##*/}
+              git checkout testing_ge_reports_and_runners
               git status
            fi
            
