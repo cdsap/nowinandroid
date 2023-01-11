@@ -55,7 +55,7 @@ runs:
 
            if [ "${{inputs.variant}}" == "main" ]; then
               git fetch origin
-              git checkout $branch_exp
+              git checkout HEAD
               git status
            fi
            
