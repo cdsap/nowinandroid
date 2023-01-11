@@ -73,7 +73,7 @@ runs:
                 }
                 console.log(data);
                 });
-                const scriptS = require("./alo")  
+                
                 const comment = 'LOL';
                 github.rest.issues.createComment({
                 issue_number: context.issue.number,
