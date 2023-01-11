@@ -71,19 +71,19 @@ runs:
                 const fs = require('fs');
 
                 fs.readFile('alo', 'utf8', (err, data) => {
-                if (err) {
-                  console.error(err);
-                  return;
-                }
-                console.log(data);
+                  if (err) {
+                    console.error(err);
+                    return;
+                  }
+                  const comment = 'LOL';
+                  github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                  })
                 });
                 
-                const comment = 'LOL';
-                github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-                })
+                
 
 
