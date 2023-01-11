@@ -63,6 +63,15 @@ runs:
       with:
         github-token: ${{inputs.gh_token}}
         script: |
+                const fs = require('fs');
+
+                fs.readFile('alo', 'utf8', (err, data) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+                console.log(data);
+                });
                 const scriptS = require("./alo")  
                 const comment = 'LOL';
                 github.rest.issues.createComment({
