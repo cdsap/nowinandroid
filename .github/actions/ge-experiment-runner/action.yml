@@ -59,6 +59,14 @@ runs:
               git status
            fi
            
+           CA=""
+           while read line
+           do
+              CA="$line\n"
+           done < <(tail -n +2 profiler-out/benchmark.csv)
+           SUMMARY=$'# ${{inputs.variant}}\n## Results \n $CA'
+           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+           
       shell: bash
       env:
         GRADLE_ENTERPRISE_ACCESS_KEY: ${{ inputs.api-key }}
