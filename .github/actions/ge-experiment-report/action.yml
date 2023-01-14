@@ -45,7 +45,7 @@ runs:
            git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
            cd GradleEnterpriseApiReports
            git checkout different_output_experiment
-           ./gradlew install
+           #./gradlew install
            #process tags
            tags=${{ inputs.tags }}
            arrayTags=(${IN//,/ })
@@ -57,7 +57,8 @@ runs:
 
            #geapi/build/install/geapi/bin/geapi --help > alo
            echo "1" > alo
-           geapi/build/install/geapi/bin/geapi --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
+           #geapi/build/install/geapi/bin/geapi --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
+           echo "1" > results_experiment
            chmod 0757 results_experiment
            mkdir kk
            cp results_experiment kk/
