@@ -62,7 +62,7 @@ runs:
            CA=""
            while read line
            do
-              CA="$line\n"
+              CA="$CA $line\n"
            done < <(tail -n +2 profiler-out/benchmark.csv)
            SUMMARY=$'# ${{inputs.variant}}\n## Results \n $CA'
            echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
