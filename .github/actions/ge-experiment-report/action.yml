@@ -58,8 +58,8 @@ runs:
            #geapi/build/install/geapi/bin/geapi --help > alo
            echo "1" > alo
            #geapi/build/install/geapi/bin/geapi --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
-           echo "1" > results_experiment
-           chmod 0757 results_experiment
+           echo "1" > results_experiment.txt
+           chmod 0757 results_experiment.txt
            mkdir kk
            cp results_experiment kk/
            cat results_experiment
@@ -68,5 +68,5 @@ runs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: results_experiment
+        path: results_experiment.txt
         if-no-files-found: error 
