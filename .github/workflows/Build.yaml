@@ -14,7 +14,7 @@ jobs:
          - id: foo
            uses: ./.github/actions/ge-experiment-runner
            with:
-             task: "help"
+             task: "assembleDebug"
              iterations: 1
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
