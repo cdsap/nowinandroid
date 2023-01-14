@@ -65,11 +65,10 @@ runs:
            ls -la
            cd kk 
            ls -la
+           cat alo
       shell: bash
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: experiment
-        path: |
-          kk/*
-          results_experiment
+        path: results_experiment
+        if-no-files-found: error 
