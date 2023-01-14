@@ -40,6 +40,7 @@ runs:
     - name: Execute Gradle build
       id : geapix
       run: |
+           pwd
            mkdir geapi
            cd geapi
            git clone https://github.com/cdsap/GradleEnterpriseApiReports.git
@@ -64,6 +65,7 @@ runs:
            pwd
            cd ..
            pwd
+           ls -la
       shell: bash
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
