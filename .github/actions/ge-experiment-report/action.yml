@@ -61,6 +61,8 @@ runs:
            echo "1" > results_experiment.txt
            chmod 0757 results_experiment.txt
            ls -la
+           cd ..
+           pwd
       shell: bash
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
