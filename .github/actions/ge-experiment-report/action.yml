@@ -70,5 +70,5 @@ runs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: geapi/results_experiment.txt
+        path: geapi/GradleEnterpriseApiReports/results_experiment.txt
         if-no-files-found: error 
