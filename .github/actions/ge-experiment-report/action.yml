@@ -61,6 +61,7 @@ runs:
            echo "1" > results_experiment.txt
            chmod 0757 results_experiment.txt
            ls -la
+           pwd
            cd ..
            pwd
       shell: bash
