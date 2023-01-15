@@ -65,7 +65,7 @@ runs:
               CA="$CA $line\n"
            done < <(tail -n +2 profile-out/benchmark.csv)
            SUMMARY="# ${{inputs.variant}}\n## Results \n <br>${CA}"
-           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+           echo '$SUMMARY' >> $GITHUB_STEP_SUMMARY
            
       shell: bash
       env:
