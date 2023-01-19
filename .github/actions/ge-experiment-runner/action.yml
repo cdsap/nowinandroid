@@ -62,10 +62,10 @@ runs:
            CA=""
            while read line
            do
-              CA="$CA $line\n"
+           CA="$CA $line\n"
            done < <(tail -n +2 profile-out/benchmark.csv)
            SUMMARY='# ${{inputs.variant}}\n## Results \n <br>${CA}'
-           echo '$SUMMARY' >> $GITHUB_STEP_SUMMARY
+           echo '$CA' >> $GITHUB_STEP_SUMMARY
 
       shell: bash
       env:

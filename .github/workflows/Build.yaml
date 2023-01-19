@@ -14,7 +14,7 @@ jobs:
          - id: foo
            uses: ./.github/actions/ge-experiment-runner
            with:
-             task: "assembleDebug"
+             task: ":help"
              iterations: 5
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
@@ -35,6 +35,6 @@ jobs:
              api-key: ${{ secrets.GE_API_KEY }}
              url: ${{ secrets.GE_URL }}
              gh_token: ${{secrets.GITHUB_TOKEN}}
-             
-                
+
+
 
