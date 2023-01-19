@@ -58,7 +58,7 @@ runs:
               git checkout testing_ge_reports_and_runners
               git status
            fi
-           CA="<table><tr><td>Build</td><td></td></tr>
+           CA="<table><tr><td>Build</td><td></td></tr>"
            while read line
            do
            CA="$CA <tr><td>$line</td></tr>"
