@@ -61,9 +61,14 @@ runs:
            CA="<table><tr><td>Build</td><td></td></tr>"
            while read line
            do
-            IN=${line/\#/ }
+            IN=$line
             set -- "$IN"
-            IFS=";"; declare -a Array=($*)
+            IFS=","; declare -a Array=($*)
+            echo "${Array[@]}"
+            echo "${Array[0]}"
+            echo "1"
+            echo "${Array[1]}"
+            echo "2"
             CA="$CA<tr><td>${Array[0]}</td><td>${Array[1]}</td></tr>"
            done < <(tail -n +2 profile-out/benchmark.csv)
            echo "$CA</table>" >> $GITHUB_STEP_SUMMARY
