@@ -59,13 +59,11 @@ runs:
               git status
            fi
 
-           CA=""
            while read line
            do
-           CA="$CA $line\n"
+           echo "- $line" >> $GITHUB_STEP_SUMMARY
            done < <(tail -n +2 profile-out/benchmark.csv)
-           SUMMARY='# ${{inputs.variant}}\n## Results \n <br>${CA}'
-           echo "$CA" >> $GITHUB_STEP_SUMMARY
+
 
       shell: bash
       env:
