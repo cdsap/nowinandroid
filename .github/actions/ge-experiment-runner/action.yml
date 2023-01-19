@@ -58,12 +58,12 @@ runs:
               git checkout testing_ge_reports_and_runners
               git status
            fi
-
+           CA="<table><tr><td>Build</td><td></td></tr>
            while read line
            do
-           echo "- $line" >> $GITHUB_STEP_SUMMARY
+           CA="$CA <tr><td>$line</td></tr>"
            done < <(tail -n +2 profile-out/benchmark.csv)
-           echo "<table><tr><td>s</td></tr><tr><td>dlsldsldsl</td></tr></table>" >> $GITHUB_STEP_SUMMARY
+           echo "$CA</table>" >> $GITHUB_STEP_SUMMARY
 
 
       shell: bash
