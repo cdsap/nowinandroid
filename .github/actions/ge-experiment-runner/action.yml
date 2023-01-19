@@ -58,15 +58,15 @@ runs:
               git checkout testing_ge_reports_and_runners
               git status
            fi
-           
+
            CA=""
            while read line
            do
               CA="$CA $line\n"
            done < <(tail -n +2 profile-out/benchmark.csv)
-           SUMMARY="# ${{inputs.variant}}\n## Results \n <br>${CA}"
+           SUMMARY='# ${{inputs.variant}}\n## Results \n <br>${CA}'
            echo '$SUMMARY' >> $GITHUB_STEP_SUMMARY
-           
+
       shell: bash
       env:
         GRADLE_ENTERPRISE_ACCESS_KEY: ${{ inputs.api-key }}
@@ -76,4 +76,4 @@ runs:
         name: profiler-${{inputs.variant}}
         path: |
           profile-out/*
-                  
+
