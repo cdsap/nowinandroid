@@ -14,7 +14,7 @@ jobs:
          - id: foo
            uses: ./.github/actions/ge-experiment-runner
            with:
-             task: "assembleDebug"
+             task: "assembleRelease"
              iterations: 5
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
@@ -28,7 +28,7 @@ jobs:
          - id: fooa
            uses: ./.github/actions/ge-experiment-report
            with:
-             task: "assembleDebug"
+             task: "assembleRelease"
              experiment-id: ${{github.run_number}}
              tags: "main, pr"
              project: "nowinandroid"
