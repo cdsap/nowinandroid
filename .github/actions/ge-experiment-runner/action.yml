@@ -58,20 +58,15 @@ runs:
               git checkout testing_ge_reports_and_runners
               git status
            fi
-           CA="<table><tr><td>Build</td><td></td></tr>"
+           TABLE_OUTPUT="<table><tr><td>Build</td><td></td></tr>"
            while read line
            do
             IN=$line
             set -- "$IN"
             IFS=","; declare -a Array=($*)
-            echo "${Array[@]}"
-            echo "${Array[0]}"
-            echo "1"
-            echo "${Array[1]}"
-            echo "2"
-            CA="$CA<tr><td>${Array[0]}</td><td>${Array[1]}</td></tr>"
+            TABLE_OUTPUT="$TABLE_OUTPUT<tr><td>${Array[0]}</td><td>${Array[1]}</td></tr>"
            done < <(tail -n +2 profile-out/benchmark.csv)
-           echo "$CA</table>" >> $GITHUB_STEP_SUMMARY
+           echo "$TABLE_OUTPUT</table>" >> $GITHUB_STEP_SUMMARY
 
 
       shell: bash
