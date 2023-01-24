@@ -55,8 +55,10 @@ runs:
               tagsParsed="$tagsParsed --tags=$val"
               variants="$variants;$val"
            done
+           echo "23"
            echo $tagsParsed
            echo $variants
+           echo $tags
            echo "1"
            geapi/build/install/geapi/bin/geapi --variants=$variants   --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
            CONTENT=$(cat results_experiment)
