@@ -1,5 +1,5 @@
 name: 'GE Experiment Runner'
-description: 'Experiment Report'
+description: 'Exexutes with Gradle Profiler a scenario defined'
 inputs:
   task:
     description: ""
