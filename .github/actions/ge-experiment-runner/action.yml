@@ -13,10 +13,10 @@ inputs:
     required: false
     default: 5
   class:
-    description: ""
+    description: "Class to apply the abi change"
     required: true
   variant:
-    description: ""
+    description: "variant of the experiment, represents the branch"
     required: true
   experiment-id:
     description: ""
@@ -40,22 +40,11 @@ runs:
     - name: Execute Gradle build
       id : geapix
       run: |
-           branch_exp=$(git rev-parse --abbrev-ref HEAD)
-           echo $branch_exp
-           if [ "${{inputs.variant}}" == "main" ]; then
-              git fetch origin
-              git checkout main
-              git status
-           fi
+           git checkout ${{inputs.variant}}
            unzip  ${{ steps.sdkman.outputs.file }}
            echo $'assemble { \n title= "assemble" \n tasks = [${{ inputs.task }}] \n cleanup-tasks = ["clean"] \n apply-abi-change-to = [${{ inputs.class }}] \n gradle-args = ["-Dscan.tag.${{ inputs.variant }}", "-Dscan.tag.experiment", "-Dscan.tag.${{inputs.experiment-id}}"] \n}' >scenario
            gradle-profiler-0.19.0/bin/gradle-profiler --benchmark --scenario-file scenario assemble --warmups ${{ inputs.warmups }} --iterations ${{ inputs.iterations }}
 
-           if [ "${{inputs.variant}}" == "main" ]; then
-              git fetch origin
-              git checkout testing_ge_reports_and_runners
-              git status
-           fi
            TABLE_OUTPUT="<table><tr><td>Build</td><td></td></tr>"
            while read line
            do
