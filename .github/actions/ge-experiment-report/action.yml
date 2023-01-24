@@ -49,12 +49,14 @@ runs:
            tags=${{ inputs.tags }}
            arrayTags=(${IN//,/ })
            tagsParsed=""
+           variants=""
            for val in "${arrayTags[@]}";
            do
               tagsParsed="$tagsParsed --tags=$val"
+              variants="$variants;$val"
            done
            echo $tagsParsed
-           geapi/build/install/geapi/bin/geapi --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
+           geapi/build/install/geapi/bin/geapi --variants=$variants   --report=experiment --experiment-output=file --url=https://ge.solutions-team.gradle.com  --task=${{ inputs.task }} --max-builds=${{ inputs.max-builds }}  $tagsParsed    --tags=experiment --tags=${{github.run_number}} --experiment-id=${{ inputs.experiment-id }} --project=${{ inputs.project }} --api-key=${{ inputs.api-key }}
            CONTENT=$(cat results_experiment)
            echo "$CONTENT" >> $GITHUB_STEP_SUMMARY
       shell: bash
