@@ -7,7 +7,7 @@ jobs:
     runners:
       strategy:
         matrix:
-          version: [main, pr]
+          version: [main, ${GITHUB_REF##*/}]
       runs-on: "ubuntu-latest"
       steps:
          - uses: actions/checkout@v3
