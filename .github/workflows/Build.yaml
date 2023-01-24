@@ -28,7 +28,7 @@ jobs:
          - id: fooa
            uses: ./.github/actions/ge-experiment-report
            with:
-             task: "assembleRelease"
+             task: "help"
              experiment-id: ${{github.run_number}}
              tags: "main, pr"
              project: "nowinandroid"
