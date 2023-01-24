@@ -7,7 +7,7 @@ jobs:
     runners:
       strategy:
         matrix:
-          version: [main, ${{ github.head_ref }}]
+          version: [main, "${{ github.head_ref }}"]
       runs-on: "ubuntu-latest"
       steps:
          - uses: actions/checkout@v3
