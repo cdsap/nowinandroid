@@ -47,6 +47,8 @@ runs:
            ./gradlew install
            #process tags
            tags=${{ inputs.tags }}
+           echo "xxx"
+           echo "$tags"
            arrayTags=(${IN//,/ })
            tagsParsed=""
            variants=""

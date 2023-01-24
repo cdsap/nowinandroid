@@ -30,7 +30,7 @@ jobs:
            with:
              task: "help"
              experiment-id: ${{github.run_number}}
-             tags: "main, pr"
+             tags: "main, "${{ github.head_ref }}""
              project: "nowinandroid"
              api-key: ${{ secrets.GE_API_KEY }}
              url: ${{ secrets.GE_URL }}
