@@ -14,7 +14,7 @@ jobs:
          - id: foo
            uses: cdsap/ge-experiment-runner@v1.0.1
            with:
-             task: "help"
+             task: "assembleDebug"
              iterations: 5
              experiment-id: ${{github.run_number}}
              variant: ${{ matrix.version }}
@@ -28,7 +28,7 @@ jobs:
          - id: fooa
            uses: ./.github/actions/ge-experiment-report
            with:
-             task: "help"
+             task: "assembleDebug"
              experiment-id: ${{github.run_number}}
              tags: "main, ${{ github.head_ref }}"
              project: "nowinandroid"
