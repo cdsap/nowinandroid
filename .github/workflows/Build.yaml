@@ -12,9 +12,8 @@ jobs:
       steps:
          - uses: actions/checkout@v3
          - id: foo
-           uses: actions/ge-experiment-runner@v1.0.1
+           uses: actions/cdsap/ge-experiment-runner@v1.0.1
            with:
-             fetch-depth: 0
              task: "assembleRelease"
              iterations: 5
              experiment-id: ${{github.run_number}}
