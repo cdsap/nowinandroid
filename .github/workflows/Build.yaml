@@ -26,7 +26,7 @@ jobs:
       steps:
          - uses: actions/checkout@v3
          - id: fooa
-               uses: cdsap/ge-experiment-report@v1.0
+           uses: cdsap/ge-experiment-report@v1.0
            with:
              task: "assembleDebug"
              experiment-id: ${{github.run_number}}
