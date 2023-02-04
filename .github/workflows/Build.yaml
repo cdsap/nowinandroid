@@ -15,5 +15,5 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew test -Dscan.tag.WORKERS${{ matrix.java }}-temurin
         env:
-          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "${{ matrix.java }}"
