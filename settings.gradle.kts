@@ -33,7 +33,7 @@ plugins {
     id("androidx.build.gradle.gcpbuildcache") version "1.0.0-beta01"
 
 }
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 gradleEnterprise {
     server = "https://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
@@ -47,19 +47,19 @@ gradleEnterprise {
 }
 
 
-buildCache {
-    registerBuildCacheService(
-        androidx.build.gradle.gcpbuildcache.GcpBuildCache::class,
-        androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory::class
-    )
-    remote(androidx.build.gradle.gcpbuildcache.GcpBuildCache::class) {
-        projectId = "cache-node"
-        bucketName = "cache-node"
-        credentials =
-            androidx.build.gradle.gcpbuildcache.ExportedKeyGcpCredentials(File("cache-node.json"))
-        isPush = System.getenv("CI") != null
-    }
-}
+//buildCache {
+//    registerBuildCacheService(
+//        androidx.build.gradle.gcpbuildcache.GcpBuildCache::class,
+//        androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory::class
+//    )
+//    remote(androidx.build.gradle.gcpbuildcache.GcpBuildCache::class) {
+//        projectId = "cache-node"
+//        bucketName = "cache-node"
+//        credentials =
+//            androidx.build.gradle.gcpbuildcache.ExportedKeyGcpCredentials(File("cache-node.json"))
+//        isPush = System.getenv("CI") != null
+//    }
+//}
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
