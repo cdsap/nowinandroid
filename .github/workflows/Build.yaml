@@ -19,7 +19,7 @@ jobs:
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "3"
-  zulu:
+  liberica:
     strategy:
       matrix:
         java: [3]
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          distribution: zulu
+          distribution: liberica
           java-version: 11
       - name: Execute Gradle build
         run: |
