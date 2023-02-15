@@ -14,8 +14,8 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-            sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
-            sed -i "s/\$PRIVATE_KEY/${{ secrets.BUCKET_PRIVATE_KEY }}/" cache-node.json
+          sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
+          sed -i "s/\$PRIVATE_KEY/${{ secrets.BUCKET_PRIVATE_KEY }}/" cache-node.json
           ./gradlew test -Dscan.tag.WORKERS${{ matrix.java }}-temurin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
