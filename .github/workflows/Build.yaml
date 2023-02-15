@@ -19,4 +19,4 @@ jobs:
           ./gradlew test -Dscan.tag.WORKERS${{ matrix.java }}-temurin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-          MAX_PARALLEL_FORKS: "${{ matrix.java }}"
+          MAX_PARALLEL_FORKS: "3"
