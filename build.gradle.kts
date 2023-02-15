@@ -49,6 +49,23 @@ allprojects {
                 x += it.path+ ";"
             }
             rootProject.buildScan.value(
+            "${this@configureEach.path}-javaPackagePrefix",
+            "${this@configureEach.javaPackagePrefix.toString()}"
+            )
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-usePreciseJavaTracking",
+                "${this@configureEach.usePreciseJavaTracking}"
+            )
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-usePreciseclasspathSnapshotPropertiesuseClasspathSnapshot",
+                "${this@configureEach.classpathSnapshotProperties.useClasspathSnapshot.get()}"
+            )
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-serializedCompilerArguments",
+                "${this@configureEach.serializedCompilerArguments.toString()}"
+            )
+
+            rootProject.buildScan.value(
                 "${this@configureEach.path}-classpath",
                 "${x}"
             )
