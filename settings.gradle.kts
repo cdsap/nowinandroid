@@ -28,7 +28,6 @@ pluginManagement {
 plugins {
     id("com.gradle.common-custom-user-data-gradle-plugin") version "1.8.1"
     id("com.gradle.enterprise") version "3.11.1"
-    id("androidx.build.gradle.gcpbuildcache") version "1.0.0-beta01"
 
 }
 //enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
@@ -90,3 +89,4 @@ include(":core:model")
 //include(":lint")
 //include(":sync:work")
 //include(":sync:sync-test")
+rootProject.name = "CacheIssueWithVersionCatalogs"
