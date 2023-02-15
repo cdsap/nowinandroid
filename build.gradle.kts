@@ -46,6 +46,20 @@ allprojects {
 
 
         doLast {
+
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-freeCompilerArgs",
+                "${this@configureEach.compilerOptions.freeCompilerArgs.get().joinToString(",")}"
+            )
+
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-compilerOptions",
+                "${this@configureEach.compilerOptions.toString()}"
+            )
+
+
+
+
             var x = ""
             this@configureEach.classpathSnapshotProperties.classpath.forEach {
                 x += it.path+ ";"
