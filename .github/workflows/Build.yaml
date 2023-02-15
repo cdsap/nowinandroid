@@ -14,7 +14,7 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-          ./gradlew :core:model:compileKotlin
+          ./gradlew :core:model:compileKotlin --info
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "3"
@@ -31,7 +31,7 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-          ./gradlew :core:model:compileKotlin
+          ./gradlew :core:model:compileKotlin --info
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "3"
