@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin.Companion.isInfoAsWarnings
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -51,6 +53,10 @@ allprojects {
             rootProject.buildScan.value(
             "${this@configureEach.path}-kotlinJavaToolchainProvider",
             "${this@configureEach.kotlinJavaToolchainProvider.get().javaVersion.get()}"
+            )
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-isInfoAsWarnings",
+                "${this@configureEach.kotlinJavaToolchainProvider.get().toolchain.toString()}"
             )
             rootProject.buildScan.value(
                 "${this@configureEach.path}-usePreciseJavaTracking",
