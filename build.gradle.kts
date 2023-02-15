@@ -42,16 +42,30 @@ allprojects {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
 
-        doFirst {
+
+        doLast {
+            var x = ""
+            this@configureEach.classpathSnapshotProperties.classpath.forEach {
+                x += it.path+ ";"
+            }
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-classpath",
+                "${x}"
+            )
+
             rootProject.buildScan.value(
                 "${this@configureEach.path}-size",
                 "${this@configureEach.pluginOptions.get().size}"
             )
+
             rootProject.buildScan.value(
                 "${this@configureEach.path}-size",
                 "${this@configureEach.pluginOptions.get().size}"
             )
             this@configureEach.pluginOptions.get().forEach {
+
+                println(it.getAsTaskInputArgs().size)
+                println(it.allOptions().size)
                 rootProject.buildScan.value(
                     "${this@configureEach.path}-inputs",
                     "${it.toString()}"
