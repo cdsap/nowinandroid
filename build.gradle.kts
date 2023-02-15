@@ -39,4 +39,33 @@ allprojects {
     tasks.withType<Test>().configureEach {
         maxParallelForks = System.getenv("MAX_PARALLEL_FORKS").toInt()
     }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+
+        doFirst {
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-size",
+                "${this@configureEach.pluginOptions.get().size}"
+            )
+            rootProject.buildScan.value(
+                "${this@configureEach.path}-size",
+                "${this@configureEach.pluginOptions.get().size}"
+            )
+            this@configureEach.pluginOptions.get().forEach {
+                rootProject.buildScan.value(
+                    "${this@configureEach.path}-inputs",
+                    "${it.toString()}"
+                )
+
+                it.allOptions().forEach{
+                    rootProject.buildScan.value(
+                        "${this@configureEach.path}",
+                        it.value.joinToString(",")
+                    )
+                }
+            }
+
+
+        }
+    }
 }

@@ -15,7 +15,7 @@ jobs:
       - name: Execute Gradle build
         run: |
           sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
-          ./gradlew :build-logic:convention:compileKotlin -Dscan.tag.WORKERS${{ matrix.java }}-temurin
+          ./gradlew :core:model:compileKotlin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "3"
