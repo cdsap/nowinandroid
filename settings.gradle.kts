@@ -21,6 +21,8 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
+
         gradlePluginPortal()
     }
 }
@@ -28,11 +30,12 @@ pluginManagement {
 plugins {
     id("com.gradle.common-custom-user-data-gradle-plugin") version "1.8.1"
     id("com.gradle.enterprise") version "3.11.1"
+    id("androidx.build.gradle.gcpbuildcache") version "1.0.0-beta01"
 
 }
-
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 gradleEnterprise {
-    server = "http://ge.solutions-team.gradle.com"
+    server = "https://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
     buildScan {
         publishAlways()
@@ -43,18 +46,31 @@ gradleEnterprise {
     }
 }
 
+
+buildCache {
+    registerBuildCacheService(
+        androidx.build.gradle.gcpbuildcache.GcpBuildCache::class,
+        androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory::class
+    )
+    remote(androidx.build.gradle.gcpbuildcache.GcpBuildCache::class) {
+        projectId = "cache-node"
+        bucketName = "cache-node"
+        credentials =
+            androidx.build.gradle.gcpbuildcache.ExportedKeyGcpCredentials(File("cache-node.json"))
+        isPush = System.getenv("CI") != null
+    }
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
         mavenCentral()
-        maven {
-            url = uri("https://androidx.dev/storage/compose-compiler/repository")
-
-        }
+        maven { url = uri("https://androidx.dev/storage/compose-compiler/repository") }
+        mavenLocal()
+        google()
     }
 }
-rootProject.name = "nowinandroid"
+
 include(":app")
 include(":app-nia-catalog")
 include(":benchmark")

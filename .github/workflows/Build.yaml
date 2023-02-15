@@ -4,7 +4,7 @@ jobs:
   temurin:
     strategy:
       matrix:
-        java: [1,2,3,4,5,6,7,8,9,10]
+        java: [3]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,7 +13,10 @@ jobs:
           distribution: temurin
           java-version: 11
       - name: Execute Gradle build
-        run: ./gradlew test -Dscan.tag.WORKERS${{ matrix.java }}-temurin
+        run: |
+            sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
+            sed -i "s/\$PRIVATE_KEY/${{ secrets.BUCKET_PRIVATE_KEY }}/" cache-node.json
+          ./gradlew test -Dscan.tag.WORKERS${{ matrix.java }}-temurin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "${{ matrix.java }}"
