@@ -89,4 +89,4 @@ include(":core:model")
 //include(":lint")
 //include(":sync:work")
 //include(":sync:sync-test")
-rootProject.name = "CacheIssueWithVersionCatalogs"
+rootProject.name = "nowinandroid"
