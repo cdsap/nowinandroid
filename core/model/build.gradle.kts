@@ -4,7 +4,8 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.kotlinx.datetime)
+  //  implementation(libs.kotlinx.datetime)
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 }
 
 
