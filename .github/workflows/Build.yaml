@@ -14,7 +14,6 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-          sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
           ./gradlew :core:model:compileKotlin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
@@ -32,7 +31,6 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-          sed -i "s/\$PRIVATE_KEY_ID/${{ secrets.BUCKET_PRIVATE_KEY_ID }}/" cache-node.json
           ./gradlew :core:model:compileKotlin
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
