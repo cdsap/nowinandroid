@@ -39,16 +39,8 @@ internal fun Project.configureAndroidCompose(
             kotlinCompilerExtensionVersion = libs.findVersion("androidxComposeCompiler").get().toString()
         }
 
-        kotlinOptions {
-            freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
-        }
+//        kotlinOptions {
+//            freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
+//        }
     }
-}
-
-private fun Project.buildComposeMetricsParameters(): List<String> {
-    val metricParameters = mutableListOf<String>()
-    val enableMetricsProvider = project.providers.gradleProperty("enableComposeCompilerMetrics")
-
-
-    return metricParameters.toList()
 }
