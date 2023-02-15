@@ -49,8 +49,8 @@ allprojects {
                 x += it.path+ ";"
             }
             rootProject.buildScan.value(
-            "${this@configureEach.path}-javaPackagePrefix",
-            "${this@configureEach.javaPackagePrefix.toString()}"
+            "${this@configureEach.path}-kotlinJavaToolchainProvider",
+            "${this@configureEach.kotlinJavaToolchainProvider.get().javaVersion.get()}"
             )
             rootProject.buildScan.value(
                 "${this@configureEach.path}-usePreciseJavaTracking",
@@ -86,6 +86,14 @@ allprojects {
                 rootProject.buildScan.value(
                     "${this@configureEach.path}-inputs",
                     "${it.toString()}"
+                )
+                rootProject.buildScan.value(
+                    "${this@configureEach.path}-inputs-allOptions",
+                    "${it.allOptions().toString()}"
+                )
+                rootProject.buildScan.value(
+                    "${this@configureEach.path}-inputs-getAsTaskInputArgs",
+                    "${it.getAsTaskInputArgs().toString()}"
                 )
 
                 it.allOptions().forEach{

@@ -25,7 +25,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("com.android.library")
             val extension = extensions.getByType<LibraryExtension>()
-            configureAndroidCompose(extension)
+            //configureAndroidCompose(extension)
         }
     }
 
