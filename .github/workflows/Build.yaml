@@ -17,6 +17,7 @@ jobs:
           ./gradlew :core:model:compileKotlin --info
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          MAX_PARALLEL_FORKS: "3"
   liberica:
     strategy:
       matrix:
@@ -33,3 +34,4 @@ jobs:
           ./gradlew :core:model:compileKotlin --info
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          MAX_PARALLEL_FORKS: "3"
