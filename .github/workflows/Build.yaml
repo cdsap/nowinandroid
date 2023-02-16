@@ -14,11 +14,11 @@ jobs:
           java-version: 11
       - name: Execute Gradle build
         run: |
-           ./gradlew  :core:model:compileKotlin -Dscan.tag.WORKERS${{ matrix.java }}-temurin
-           cd .gradle/7.6
-           ls
-           cd dependencies-accessors
-           ls -la
+          ./gradlew  :core:model:compileKotlin -Dscan.tag.WORKERS${{ matrix.java }}-temurin
+          cd .gradle/7.6
+          ls
+          cd dependencies-accessors
+          ls -la
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
           MAX_PARALLEL_FORKS: "${{ matrix.java }}"
