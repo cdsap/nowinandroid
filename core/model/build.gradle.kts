@@ -21,5 +21,5 @@ plugins {
 
 dependencies {
     implementation(libs.kotlinx.datetime)
-    implementation(projects.lint)
+   // implementation(projects.lint)
 }
