@@ -1,3 +1,5 @@
+import java.net.URI
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -15,7 +17,7 @@
  */
 
 pluginManagement {
-    includeBuild("build-logic")
+  includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -28,7 +30,7 @@ plugins {
     id("com.gradle.enterprise") version "3.11.1"
 
 }
-
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 gradleEnterprise {
     server = "http://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
@@ -46,29 +48,33 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://androidx.dev/storage/compose-compiler/repository")
+
+        }
     }
 }
 rootProject.name = "nowinandroid"
-include(":app")
-include(":app-nia-catalog")
-include(":benchmark")
-include(":core:common")
-include(":core:data")
-include(":core:data-test")
-include(":core:database")
-include(":core:datastore")
-include(":core:datastore-test")
-include(":core:designsystem")
+//include(":app")
+//include(":app-nia-catalog")
+//include(":benchmark")
+//include(":core:common")
+//include(":core:data")
+//include(":core:data-test")
+//include(":core:database")
+//include(":core:datastore")
+//include(":core:datastore-test")
+//include(":core:designsystem")
 include(":core:model")
-include(":core:navigation")
-include(":core:network")
-include(":core:ui")
-include(":core:testing")
-include(":feature:author")
-include(":feature:foryou")
-include(":feature:interests")
-include(":feature:bookmarks")
-include(":feature:topic")
-include(":lint")
-include(":sync:work")
-include(":sync:sync-test")
+//include(":core:navigation")
+//include(":core:network")
+//include(":core:ui")
+//include(":core:testing")
+//include(":feature:author")
+//include(":feature:foryou")
+//include(":feature:interests")
+//include(":feature:bookmarks")
+//include(":feature:topic")
+//include(":lint")
+//include(":sync:work")
+//include(":sync:sync-test")

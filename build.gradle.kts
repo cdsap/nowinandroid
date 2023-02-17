@@ -27,8 +27,16 @@ buildscript {
 
 plugins {
     alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.secrets) apply false
+    id("io.github.cdsap.testprocess") version "0.1"
+}
+
+
+allprojects {
+    tasks.withType<Test>().configureEach {
+        maxParallelForks = System.getenv("MAX_PARALLEL_FORKS").toInt()
+    }
 }
