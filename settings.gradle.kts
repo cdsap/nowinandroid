@@ -17,7 +17,7 @@ import java.net.URI
  */
 
 pluginManagement {
-  //  includeBuild("build-logic")
+  includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -75,6 +75,6 @@ include(":core:model")
 //include(":feature:interests")
 //include(":feature:bookmarks")
 //include(":feature:topic")
-include(":lint")
+//include(":lint")
 //include(":sync:work")
 //include(":sync:sync-test")
