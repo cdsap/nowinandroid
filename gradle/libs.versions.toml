@@ -51,7 +51,8 @@ secrets = "2.0.1"
 turbine = "0.8.4"
 
 [libraries]
-accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
+accompanist-flowlayout2 = { group = "com.google.acc4sssss55ompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
+accompanist-flowlayout = { group = "com.google.acc455ompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
