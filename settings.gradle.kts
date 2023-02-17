@@ -1,3 +1,5 @@
+import java.net.URI
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -10,12 +12,12 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * See the Lixcense for the specific language governing permissions and
  * limitations under the License.
  */
 
 pluginManagement {
-    includeBuild("build-logic")
+  //  includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -28,9 +30,9 @@ plugins {
     id("com.gradle.enterprise") version "3.11.1"
 
 }
-
+//enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 gradleEnterprise {
-    server = "http://ge.solutions-team.gradle.com"
+    server = "https://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
     buildScan {
         publishAlways()
@@ -41,34 +43,50 @@ gradleEnterprise {
     }
 }
 
+
+//buildCache {
+//    registerBuildCacheService(
+//        androidx.build.gradle.gcpbuildcache.GcpBuildCache::class,
+//        androidx.build.gradle.gcpbuildcache.GcpBuildCacheServiceFactory::class
+//    )
+//    remote(androidx.build.gradle.gcpbuildcache.GcpBuildCache::class) {
+//        projectId = "cache-node"
+//        bucketName = "cache-node"
+//        credentials =
+//            androidx.build.gradle.gcpbuildcache.ExportedKeyGcpCredentials(File("cache-node.json"))
+//        isPush = System.getenv("CI") != null
+//    }
+//}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
         mavenCentral()
+        google()
     }
 }
-rootProject.name = "nowinandroid"
-include(":app")
-include(":app-nia-catalog")
-include(":benchmark")
-include(":core:common")
-include(":core:data")
-include(":core:data-test")
-include(":core:database")
-include(":core:datastore")
-include(":core:datastore-test")
-include(":core:designsystem")
+
+//include(":app")
+//include(":app-nia-catalog")
+//include(":benchmark")
+//include(":core:common")
+//include(":core:data")
+//include(":core:data-test")
+//include(":core:database")
+//include(":core:datastore")
+//include(":core:datastore-test")
+//include(":core:designsystem")
 include(":core:model")
-include(":core:navigation")
-include(":core:network")
-include(":core:ui")
-include(":core:testing")
-include(":feature:author")
-include(":feature:foryou")
-include(":feature:interests")
-include(":feature:bookmarks")
-include(":feature:topic")
-include(":lint")
-include(":sync:work")
-include(":sync:sync-test")
+//include(":core:navigation")
+//include(":core:network")
+//include(":core:ui")
+//include(":core:testing")
+//include(":feature:author")
+//include(":feature:foryou")
+//include(":feature:interests")
+//include(":feature:bookmarks")
+//include(":feature:topic")
+//include(":lint")
+//include(":sync:work")
+//include(":sync:sync-test")
+rootProject.name = "nowinandroid"
