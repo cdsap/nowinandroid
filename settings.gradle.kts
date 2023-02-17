@@ -30,7 +30,7 @@ plugins {
     id("com.gradle.enterprise") version "3.11.1"
 
 }
-
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 gradleEnterprise {
     server = "http://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
@@ -75,6 +75,6 @@ include(":core:model")
 //include(":feature:interests")
 //include(":feature:bookmarks")
 //include(":feature:topic")
-//include(":lint")
+include(":lint")
 //include(":sync:work")
 //include(":sync:sync-test")
