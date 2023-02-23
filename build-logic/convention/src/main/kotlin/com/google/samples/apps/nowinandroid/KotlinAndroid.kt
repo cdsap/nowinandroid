@@ -57,6 +57,9 @@ internal fun Project.configureKotlinAndroid(
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
                 "-opt-in=kotlinx.coroutines.FlowPreview",
                 "-opt-in=kotlin.Experimental",
+                "-P",
+                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+
             )
 
             // Set JVM target to 1.8

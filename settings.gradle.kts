@@ -1,3 +1,5 @@
+import java.net.URI
+
 /*
  * Copyright 2021 The Android Open Source Project
  *
@@ -46,6 +48,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://androidx.dev/storage/compose-compiler/repository")
+
+        }
     }
 }
 rootProject.name = "nowinandroid"
