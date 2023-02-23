@@ -36,6 +36,7 @@ plugins {
 
 
 allprojects {
+    println(this.rootDir.path.toString())
     tasks.withType<Test>().configureEach {
         maxParallelForks = System.getenv("MAX_PARALLEL_FORKS").toInt()
     }
