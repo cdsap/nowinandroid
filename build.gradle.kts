@@ -20,10 +20,13 @@ buildscript {
         mavenCentral()
 
         // Android Build Server
+
         maven { url = uri("../nowinandroid-prebuilts/m2repository") }
     }
 
+
 }
+
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -31,4 +34,6 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.secrets) apply false
+    id("io.github.cdsap.kotlinprocess") version "0.1.3"
 }
+
